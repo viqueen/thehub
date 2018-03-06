@@ -3,6 +3,10 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 
 const path = require('path')
+const PATHS = {
+  build: path.join(__dirname, '../target', 'classes', 'public')
+};
+
 
 module.exports = {
   dev: {
@@ -45,10 +49,10 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(PATHS.build, 'index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    assetsRoot: PATHS.build,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 

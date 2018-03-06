@@ -8,12 +8,10 @@
         <version>1.5.9.RELEASE</version>
     </parent>
 
-    <groupId>io.swagger</groupId>
-    <artifactId>swagger-spring</artifactId>
-    <version>1.0.0</version>
+    <groupId>org.viqueen.thehub</groupId>
+    <artifactId>portal-server</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-    <name>swagger-spring</name>
 
     <properties>
         <java.version>1.7</java.version>
@@ -30,6 +28,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.viqueen.thehub</groupId>
+            <artifactId>portal-frontend</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <!--SpringFox dependencies -->
         <dependency>
@@ -58,6 +61,30 @@
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.2</version>
+                <executions>
+                    <execution>
+                        <id>unpack</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>org.viqueen.thehub</groupId>
+                                    <artifactId>portal-frontend</artifactId>
+                                    <version>${project.version}</version>
+                                    <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
