@@ -9,8 +9,8 @@ import org.viqueen.portal.model.Customer;
 
 import java.util.List;
 
-@Component("customersApi")
 @Profile("dev")
+@Component("customersApi")
 public class CustomersApiMock implements CustomersApi {
 
     private final Faker faker;
