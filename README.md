@@ -1,5 +1,12 @@
 # the hub
 
+## Status
+
+[![Quality Gate](https://sonarcloud.io/api/badges/gate?key=org.viqueen.thehub:thehub)]()
+[![Technical debt ratio](https://sonarcloud.io/api/badges/measure?key=org.viqueen.thehub:thehub&metric=sqale_debt_ratio)]()
+
+[SonarCloud](https://sonarcloud.io/dashboard?id=org.viqueen.thehub%3Athehub)
+
 ## Dev Notes
 
 #### Backend Overview ...

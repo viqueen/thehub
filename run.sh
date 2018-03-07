@@ -7,4 +7,11 @@ dev() {
     --projects portal-server
 }
 
+sonar() {
+    mvn sonar:sonar \
+        -Dsonar.organization=viqueen-github \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=${VIQUEEN_GITHUB_SONAR_LOGIN}
+}
+
 eval $@
