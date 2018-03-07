@@ -6,8 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 import java.util.List;
 
-import static java.util.Collections.unmodifiableList;
-
+@SuppressWarnings("unused")
 @JsonAutoDetect
 public class ApiDefinition {
 
@@ -33,10 +32,6 @@ public class ApiDefinition {
 
     public String getDescription() {
         return description;
-    }
-
-    public List<ApiEndpoint> getEndpoints() {
-        return unmodifiableList(endpoints);
     }
 
     public static Builder builder() {

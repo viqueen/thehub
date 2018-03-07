@@ -9,9 +9,14 @@
       </md-toolbar>
 
       <md-list>
-        <md-list-item :key="definition.name" v-for="definition of definitions">
+        <md-list-item md-expand :key="definition.name" v-for="definition of definitions">
           <md-icon>move_to_inbox</md-icon>
           <span class="md-list-item-text">{{ definition.name }}</span>
+          <md-list slot="md-expand">
+            <md-list-item class="md-inset" :key="endpoint.key" v-for="endpoint of definition.endpoints">
+              <span class="md-list-item-text">{{endpoint.paths[0]}}</span>
+            </md-list-item>
+          </md-list>
         </md-list-item>
       </md-list>
     </md-app-drawer>
@@ -39,7 +44,11 @@ export default {
     border: 1px solid rgba(#000, .12);
   }
   .md-drawer {
-    width: 300px;
+    width: 400px;
     max-width: calc(100vw - 125px);
+    border-right: 1px solid rgba(#000, .12);
+  }
+  .md-list-item-text {
+    word-wrap: break-word;
   }
 </style>
