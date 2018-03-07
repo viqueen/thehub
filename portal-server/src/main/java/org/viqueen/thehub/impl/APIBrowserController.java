@@ -3,6 +3,7 @@ package org.viqueen.thehub.impl;
 import io.swagger.annotations.Api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.viqueen.portal.api.*;
@@ -14,6 +15,7 @@ import java.util.Set;
 import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toSet;
 
 @Controller
 public class APIBrowserController {
@@ -49,7 +51,11 @@ public class APIBrowserController {
         stream(type.getDeclaredMethods())
                 .forEach(method -> {
                     final RequestMapping mapping = method.getAnnotation(RequestMapping.class);
-                    builder.endpoint(new ApiEndpoint(mapping.method()[0].name(), mapping.value()));
+                    final Set<String> parameters = stream(method.getParameters())
+                            .filter(item -> item.isAnnotationPresent(PathVariable.class))
+                            .map(item -> item.getAnnotation(PathVariable.class).name())
+                            .collect(toSet());
+                    builder.endpoint(new ApiEndpoint(mapping.method()[0].name(), mapping.value()[0], parameters));
                 });
 
         return builder.build();

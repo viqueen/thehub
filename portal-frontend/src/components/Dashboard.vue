@@ -13,8 +13,12 @@
           <md-icon>move_to_inbox</md-icon>
           <span class="md-list-item-text">{{ definition.name }}</span>
           <md-list slot="md-expand">
-            <md-list-item class="md-inset" :key="endpoint.key" v-for="endpoint of definition.endpoints">
-              <span class="md-list-item-text">{{endpoint.paths[0]}}</span>
+            <md-list-item
+              class="md-inset"
+              :key="endpoint.key"
+              v-for="endpoint of definition.endpoints"
+              :href="endpoint.path">
+              <span class="md-list-item-text">{{endpoint.path}}</span>
             </md-list-item>
           </md-list>
         </md-list-item>

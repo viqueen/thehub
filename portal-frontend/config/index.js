@@ -18,6 +18,10 @@ module.exports = {
       '/api/definitions': {
         target: 'http://localhost:8080',
         secure: false
+      },
+      '/customers': {
+        target: 'http://localhost:8080',
+        secure: false
       }
     },
 

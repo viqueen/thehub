@@ -7,7 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = { "org.viqueen", "org.viqueen.thehub", "org.viqueen.portal.api"})
+@ComponentScan(basePackages = {
+        "org.viqueen.thehub",
+        "org.viqueen.portal.dev",
+        "org.viqueen.portal.impl",
+        "org.viqueen.portal.api"
+})
 public class TheHubSpringBoot implements CommandLineRunner {
 
     @Override
