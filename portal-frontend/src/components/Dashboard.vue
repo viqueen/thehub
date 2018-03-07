@@ -18,7 +18,8 @@
               :key="endpoint.key"
               v-for="endpoint of definition.endpoints"
               :href="endpoint.path">
-              <span class="md-list-item-text">{{endpoint.path}}</span>
+              <span><b>{{endpoint.method}}</b></span>
+              <span class="md-list-item-text"> {{endpoint.path}}</span>
             </md-list-item>
           </md-list>
         </md-list-item>

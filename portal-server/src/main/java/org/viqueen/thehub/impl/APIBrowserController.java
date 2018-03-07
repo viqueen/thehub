@@ -22,14 +22,14 @@ public class APIBrowserController {
 
     // TODO : turn this into a supported api supplier, that listens to API enabled events and registers the new classes
     private Set<Class<?>> supportedAPIs = new HashSet<>(asList(
-            AccountsApi.class,
-            CardsApi.class,
-            CurrenciesApi.class,
-            CustomersApi.class,
-            IdeasApi.class,
-            LocationsApi.class,
-            PaymentsApi.class,
-            TransactionsApi.class
+//            AccountsApi.class,
+//            CardsApi.class,
+//            CurrenciesApi.class,
+            CustomersApi.class
+//            IdeasApi.class,
+//            LocationsApi.class,
+//            PaymentsApi.class,
+//            TransactionsApi.class
     ));
 
     @RequestMapping(value = "/api/definitions",

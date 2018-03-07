@@ -39,7 +39,7 @@ public class CustomersApiMock implements CustomersApi {
         // hax
         final Locale locale = request.getLocale();
         final Locale resolvedLocale;
-        if (isEmpty(locale.getCountry()) && "nb".equals(locale.getLanguage())) {
+        if (isEmpty(locale.getCountry()) && locale.getLanguage().matches("nb|no")) {
             // faker does not know how to resolve locales without a country defined
             // while I fix that (open-source PR), I am applying this workaround for Norsk
             resolvedLocale = Locale.forLanguageTag("nb-NO");
