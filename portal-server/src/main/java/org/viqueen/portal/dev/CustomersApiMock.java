@@ -1,6 +1,7 @@
 package org.viqueen.portal.dev;
 
 import com.github.javafaker.Faker;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -15,6 +16,7 @@ public class CustomersApiMock implements CustomersApi {
 
     private final Faker faker;
 
+    @Autowired
     public CustomersApiMock() {
         faker = new Faker();
     }

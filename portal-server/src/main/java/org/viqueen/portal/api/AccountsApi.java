@@ -39,7 +39,6 @@ public interface AccountsApi {
         @ApiResponse(code = 404, message = "Not Found", response = Error.class) })
     @RequestMapping(value = "/accounts/{accountNumber}/balance",
         produces = { "application/json" }, 
-        consumes = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<AccountBalance> getAccountBalance(@Pattern(regexp="^\\d{11}$") @Size(min=11,max=11) @ApiParam(value = "",required=true) @PathVariable("accountNumber") String accountNumber);
 
@@ -58,7 +57,6 @@ public interface AccountsApi {
         @ApiResponse(code = 404, message = "accountNumber not found", response = Error.class) })
     @RequestMapping(value = "/accounts/{accountNumber}",
         produces = { "application/json" }, 
-        consumes = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<AccountDetails> getAccountDetails(@Pattern(regexp="^\\d{11}$") @Size(min=11,max=11) @ApiParam(value = "",required=true) @PathVariable("accountNumber") String accountNumber);
 
@@ -75,7 +73,6 @@ public interface AccountsApi {
         @ApiResponse(code = 404, message = "Status 404", response = Error.class) })
     @RequestMapping(value = "/accounts/{accountNumber}/payments/due/{paymentId}",
         produces = { "application/json" }, 
-        consumes = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<Payment> getAccountPaymentDetailsById(@Pattern(regexp="^\\d{11}$") @Size(min=11,max=11) @ApiParam(value = "",required=true) @PathVariable("accountNumber") String accountNumber,@ApiParam(value = "",required=true) @PathVariable("paymentId") String paymentId);
 
@@ -92,7 +89,6 @@ public interface AccountsApi {
         @ApiResponse(code = 404, message = "Status 404", response = Error.class) })
     @RequestMapping(value = "/accounts/{accountNumber}/payments/due",
         produces = { "application/json" }, 
-        consumes = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<List<Payment>> getAccountPaymentsDue(@Pattern(regexp="^\\d{11}$") @Size(min=11,max=11) @ApiParam(value = "",required=true) @PathVariable("accountNumber") String accountNumber,@ApiParam(value = "Filter for start date (included).") @Valid @RequestParam(value = "startDate", required = false) LocalDate startDate,@ApiParam(value = "Filter for end date (included).") @Valid @RequestParam(value = "stopDate", required = false) String stopDate);
 
@@ -111,7 +107,6 @@ public interface AccountsApi {
         @ApiResponse(code = 404, message = "Not Found", response = Error.class) })
     @RequestMapping(value = "/accounts/{accountNumber}/transactions/{transactionId}",
         produces = { "application/json" }, 
-        consumes = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<Transaction> getAccountTransactionById(@Pattern(regexp="^\\d{11}$") @Size(min=11,max=11) @ApiParam(value = "",required=true) @PathVariable("accountNumber") String accountNumber,@ApiParam(value = "",required=true) @PathVariable("transactionId") String transactionId);
 
@@ -130,7 +125,6 @@ public interface AccountsApi {
         @ApiResponse(code = 404, message = "Not Found", response = Error.class) })
     @RequestMapping(value = "/accounts/{accountNumber}/transactions",
         produces = { "application/json" }, 
-        consumes = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<List<Transaction>> getAccountTransactions(@Pattern(regexp="^\\d{11}$") @Size(min=11,max=11) @ApiParam(value = "",required=true) @PathVariable("accountNumber") String accountNumber,@ApiParam(value = "Ascending, descending") @Valid @RequestParam(value = "sortOrder", required = false) String sortOrder,@ApiParam(value = "Filter for start date (included)") @Valid @RequestParam(value = "dateFrom", required = false) LocalDate dateFrom,@ApiParam(value = "Filter for end date (included).") @Valid @RequestParam(value = "dateTo", required = false) LocalDate dateTo,@ApiParam(value = "Filter for minimum amount (included). No decimals.") @Valid @RequestParam(value = "amountMinimum", required = false) BigDecimal amountMinimum,@ApiParam(value = "Filter for maximum amount (included). No decimals.") @Valid @RequestParam(value = "amountMaximum", required = false) String amountMaximum,@ApiParam(value = "Filter for MCC. Use code only.") @Valid @RequestParam(value = "MCC", required = false) String MCC,@ApiParam(value = "Filter for free text. Case insensitive.") @Valid @RequestParam(value = "freeText", required = false) String freeText,@ApiParam(value = "Should pending transactions be included?") @Valid @RequestParam(value = "includePending", required = false) Boolean includePending);
 
@@ -147,7 +141,6 @@ public interface AccountsApi {
         @ApiResponse(code = 404, message = "Status 404", response = Error.class) })
     @RequestMapping(value = "/accounts",
         produces = { "application/json" }, 
-        consumes = { "application/json" },
         method = RequestMethod.GET)
     ResponseEntity<List<Account>> getAccountsForCurrentUser();
 
