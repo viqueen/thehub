@@ -29,6 +29,7 @@ public class CustomersApiMock implements CustomersApi {
     @Override
     public ResponseEntity<Customer> getCustomerById(String customerId) {
         final Customer customer = new Customer();
+        customer.customerId(customerId);
         customer.companyName(faker.company().name());
         customer.countryOfBirth(faker.address().country());
         customer.customerType(Customer.CustomerTypeEnum.PERSON);
