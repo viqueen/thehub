@@ -1,7 +1,7 @@
 <template>
   <md-app md-waterfall md-mode="fixed">
     <md-app-toolbar class="md-primary">
-      <span class="md-title">{{ api.title }}</span>
+      <span class="md-title"></span>
     </md-app-toolbar>
     <md-app-drawer md-permanent="full">
       <md-toolbar class="md-transparent" md-elevation="0">
@@ -9,24 +9,9 @@
       </md-toolbar>
 
       <md-list>
-        <md-list-item>
+        <md-list-item :key="definition.name" v-for="definition of definitions">
           <md-icon>move_to_inbox</md-icon>
-          <span class="md-list-item-text">Inbox</span>
-        </md-list-item>
-
-        <md-list-item>
-          <md-icon>send</md-icon>
-          <span class="md-list-item-text">Sent Mail</span>
-        </md-list-item>
-
-        <md-list-item>
-          <md-icon>delete</md-icon>
-          <span class="md-list-item-text">Trash</span>
-        </md-list-item>
-
-        <md-list-item>
-          <md-icon>error</md-icon>
-          <span class="md-list-item-text">Spam</span>
+          <span class="md-list-item-text">{{ definition.name }}</span>
         </md-list-item>
       </md-list>
     </md-app-drawer>
@@ -34,14 +19,17 @@
 </template>
 
 <script>
+import Axios from 'axios'
 export default {
   name: 'Dashboard',
   data () {
     return {
-      api: {
-        title: 'mock api'
-      }
+      definitions: []
     }
+  },
+  mounted () {
+    Axios.get('/api/definitions')
+      .then(response => { this.definitions = response.data })
   }
 }
 </script>
