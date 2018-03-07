@@ -35,3 +35,21 @@ vue init webpack portal-frontend
 
 
 #### Mishmash ...
+
+- run the backend, it should start a server on port 8080
+```
+./run.sh dev    # dev mode
+./run.sh prod   # prod mode
+./run.sh debug [profile?]  # run with debugger, default profile is dev if not specified
+```
+
+- run the frontend, it should start a dev server on port 8081
+```
+cd portal-frontend && npm start
+```
+
+- explore the whole thing by browsing to
+```
+http://localhost:8081/
+```
+

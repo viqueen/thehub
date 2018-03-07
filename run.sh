@@ -1,9 +1,26 @@
 #! /usr/bin/env bash
 
+__default() {
+    echo ${1}
+}
+
+debug() {
+    profile=$(__default ${1} 'dev')
+    mvn spring-boot:run \
+    -Drun.profiles=${profile} \
+    -Drun.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005" \
+    --projects portal-server
+}
+
 dev() {
     mvn spring-boot:run \
     -Drun.profiles=dev \
-    -Dspring-boot.run.jvmArguments="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005" \
+    --projects portal-server
+}
+
+prod() {
+    mvn spring-boot:run \
+    -Drun.profiles=production \
     --projects portal-server
 }
 
