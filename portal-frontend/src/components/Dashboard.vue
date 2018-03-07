@@ -5,7 +5,7 @@
     </md-app-toolbar>
     <md-app-drawer md-permanent="full">
       <md-toolbar class="md-transparent" md-elevation="0">
-        <h2>API Browser</h2>
+        <h2>{{$t("dashboard.title")}}</h2>
       </md-toolbar>
 
       <md-list>
