@@ -11,7 +11,8 @@ import org.springframework.context.annotation.ComponentScan;
         "org.viqueen.thehub",
         "org.viqueen.portal.dev",
         "org.viqueen.portal.impl",
-        "org.viqueen.portal.api"
+        "org.viqueen.portal.api",
+        "org.viqueen.portal.plugin"
 })
 public class TheHubSpringBoot implements CommandLineRunner {
 
@@ -33,6 +34,6 @@ public class TheHubSpringBoot implements CommandLineRunner {
         public int getExitCode() {
             return 10;
         }
-
     }
+
 }

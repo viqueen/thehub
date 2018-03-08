@@ -1,26 +1,23 @@
-package org.viqueen.portal.model;
+package org.viqueen.portal.customers.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.validation.annotation.Validated;
-import javax.validation.Valid;
-import javax.validation.constraints.*;
+import java.util.Objects;
 
-/**
- * One common &#x60;&#x60;&#x60;customer&#x60;&#x60;&#x60;data object for all kinds of customers: Private customers, business customers, and others.  Please note: * Some updates may be required. * Should be aligned with Shared Services Layer: https://shasl.restlet.io/#type_customer * Should be aligned with CIM, while still hiding internal complexity and making it easy to understand and use.
- */
 @ApiModel(description = "One common ```customer```data object for all kinds of customers: Private customers, business customers, and others.  Please note: * Some updates may be required. * Should be aligned with Shared Services Layer: https://shasl.restlet.io/#type_customer * Should be aligned with CIM, while still hiding internal complexity and making it easy to understand and use.")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-03-06T17:32:28.136+01:00")
-
-public class Customer   {
+public class Customer {
   @JsonProperty("customerId")
   private String customerId = null;
 
@@ -360,7 +357,7 @@ public class Customer   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -391,7 +388,7 @@ public class Customer   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Customer {\n");
-    
+
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    customerType: ").append(toIndentedString(customerType)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
@@ -412,7 +409,7 @@ public class Customer   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

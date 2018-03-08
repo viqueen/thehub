@@ -34,6 +34,11 @@
             <artifactId>portal-frontend</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.viqueen.thehub</groupId>
+            <artifactId>portal-plugin-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <!--SpringFox dependencies -->
         <dependency>
             <groupId>io.springfox</groupId>

@@ -1,12 +1,14 @@
-package org.viqueen.portal.dev;
+package org.viqueen.portal.customers.dev;
 
 import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.viqueen.portal.api.CustomersApi;
-import org.viqueen.portal.model.Customer;
+import org.viqueen.portal.customers.api.CustomersApi;
+import org.viqueen.portal.customers.model.Customer;
+import org.viqueen.portal.plugin.FakerSupplier;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -24,7 +26,7 @@ public class CustomersApiMock implements CustomersApi {
     @Autowired
     public CustomersApiMock(
             final FakerSupplier fakerSupplier,
-            final HttpServletRequest request) {
+            @Lazy final HttpServletRequest request) {
         this.fakerSupplier = fakerSupplier;
         this.request = request;
     }

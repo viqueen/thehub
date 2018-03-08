@@ -1,4 +1,4 @@
-package org.viqueen.portal.dev;
+package org.viqueen.portal.plugin;
 
 import com.github.javafaker.Faker;
 import org.springframework.stereotype.Component;

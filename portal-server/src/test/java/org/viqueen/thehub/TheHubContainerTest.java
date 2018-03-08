@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.viqueen.portal.api.CustomersApiController;
 import org.viqueen.thehub.configuration.HomeController;
 
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -19,13 +18,10 @@ public class TheHubContainerTest {
 
     @Autowired
     private HomeController controller;
-    @Autowired
-    private CustomersApiController customersApiController;
 
     @Test
     public void contextLoads() {
         assertThat(controller).isNotNull();
-        assertThat(customersApiController).isNotNull();
     }
 
 }

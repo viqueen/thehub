@@ -1,23 +1,20 @@
-package org.viqueen.portal.model;
+package org.viqueen.portal.customers.model;
 
-import java.util.Objects;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonValue;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import java.util.Objects;
 
-/**
- * Used with &#x60;&#x60;&#x60;customer&#x60;&#x60;&#x60;.   Work in progress. See https://shasl.restlet.io/#type_engagement
- */
 @ApiModel(description = "Used with ```customer```.   Work in progress. See https://shasl.restlet.io/#type_engagement")
 @Validated
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2018-03-06T17:32:28.136+01:00")
-
-public class CustomerEngagement   {
+public class CustomerEngagement {
   @JsonProperty("engagementId")
   private String engagementId = null;
 
@@ -169,7 +166,7 @@ public class CustomerEngagement   {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -193,7 +190,7 @@ public class CustomerEngagement   {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class CustomerEngagement {\n");
-    
+
     sb.append("    engagementId: ").append(toIndentedString(engagementId)).append("\n");
     sb.append("    engagementType: ").append(toIndentedString(engagementType)).append("\n");
     sb.append("    accountNumber: ").append(toIndentedString(accountNumber)).append("\n");
@@ -207,7 +204,7 @@ public class CustomerEngagement   {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

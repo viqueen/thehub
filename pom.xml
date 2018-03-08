@@ -7,8 +7,17 @@
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <springfox-version>2.7.0</springfox-version>
+    </properties>
+
     <modules>
         <module>portal-frontend</module>
         <module>portal-server</module>
+        <module>portal-customers-api</module>
+        <module>portal-plugin-api</module>
     </modules>
 </project>
