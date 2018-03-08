@@ -1,9 +1,7 @@
 package org.viqueen.thehub.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,14 +22,10 @@ import static java.util.stream.StreamSupport.stream;
 public class APIUploadController {
 
     private final ApplicationEventPublisher eventPublisher;
-    private final ApplicationContext applicationContext;
 
     @Autowired
-    public APIUploadController(
-            final ApplicationEventPublisher eventPublisher,
-            final ApplicationContext applicationContext) {
+    public APIUploadController(final ApplicationEventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
-        this.applicationContext = applicationContext;
     }
 
     @RequestMapping(value = "/api/upload", method = RequestMethod.POST)
@@ -42,15 +36,8 @@ public class APIUploadController {
         final URLClassLoader classLoader = new URLClassLoader(new URL[]{temp.toURI().toURL()}, APIUploadController.class.getClassLoader());
         final ServiceLoader<PluginDefinition> plugins = ServiceLoader.load(PluginDefinition.class, classLoader);
 
-        final AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
-        context.setClassLoader(classLoader);
-        context.setParent(applicationContext);
-
         stream(plugins.spliterator(), false)
-                .flatMap(pluginDefinition -> pluginDefinition.getPackages().stream())
-                .forEach(context::scan);
-
-        context.refresh();
+                .forEach(item -> eventPublisher.publishEvent(new APIPluginDefinitionEvent(this, item)));
 
         stream(plugins.spliterator(), false)
                 .map(PluginDefinition::getAPIs)
